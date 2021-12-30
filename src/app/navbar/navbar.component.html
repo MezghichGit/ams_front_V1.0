@@ -2,8 +2,11 @@
   <a class="navbar-brand" href="#">Gestion de Stock</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/listProvider" routerLinkActive="active">Liste Providers</a>
-      <a class="nav-item nav-link" routerLink="/addProvider" routerLinkActive="active">Ajouter Provider</a>
+
+      <a class="nav-item nav-link" routerLink="/listProvider" *ngIf="loginService.isUserLoggedIn()" routerLinkActive="active">Liste Providers</a>
+      <a class="nav-item nav-link" routerLink="/addProvider" *ngIf="loginService.isUserLoggedIn()" routerLinkActive="active">Ajouter Provider</a>
+      <a class="nav-item nav-link" routerLink="/login" *ngIf="!loginService.isUserLoggedIn()" routerLinkActive="active">Login</a>
+      <a class="nav-item nav-link" routerLink="/logout" *ngIf="loginService.isUserLoggedIn()" routerLinkActive="active">LogOut</a>
     </div>
   </div>
 </nav>
