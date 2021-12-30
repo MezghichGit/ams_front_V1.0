@@ -18,9 +18,19 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   checkLogin() {
-    if (this.loginservice.authenticate(this.username, this.password)) {
+
+    this.loginservice.authenticate(this.username, this.password).subscribe(
+      data => {
+        this.router.navigate([''])
+        this.invalidLogin = false
+      },
+      error => {
+          this.invalidLogin = true
+      })
+
+    /*if (this.loginservice.authenticate(this.username, this.password)) {
       this.router.navigate([''])
     } else
-      this.invalidLogin = true
+      this.invalidLogin = true*/
   }
 }

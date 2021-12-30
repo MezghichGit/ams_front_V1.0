@@ -1,32 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ProviderService {
 
+
+  username = sessionStorage.getItem('username');
+  password = sessionStorage.getItem('password');
+
   baseUrl = environment.urlProviders;
   provider: any;
   constructor(private Http: HttpClient) { }
   listProviders() {
-    return this.Http.get(this.baseUrl  + '/list');
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
+
+    return this.Http.get(this.baseUrl  + '/list',{ headers });
   }
   createProvider(myform) {
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
     this.provider = {
       'name': myform.value.providerName,
       'email': myform.value.providerEmail,
       'address': myform.value.providerAdress
     }
-    return this.Http.post(this.baseUrl  + '/add', this.provider);
+    return this.Http.post(this.baseUrl  + '/add', this.provider,{ headers });
   }
   updateProvider(myObj) {
-    return this.Http.put(this.baseUrl  + '/' + myObj['id'], myObj);
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
+    return this.Http.put(this.baseUrl  + '/' + myObj['id'], myObj,{ headers });
   }
   deleteProvider(myObj) {
-    return this.Http.delete(this.baseUrl  + '/' + myObj['id'])
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
+    return this.Http.delete(this.baseUrl  + '/' + myObj['id'],{ headers })
   }
   getProvider(id) {
-    return this.Http.get(this.baseUrl + '/' + id)
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
+    return this.Http.get(this.baseUrl + '/' + id,{ headers })
   }
 }

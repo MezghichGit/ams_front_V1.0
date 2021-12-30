@@ -5,13 +5,14 @@ import { ListProviderComponent } from './list-provider/list-provider.component';
 import { UpdateProviderComponent } from './update-provider/update-provider.component';
 import { LogoutComponent } from './logout/logout.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGaurdService } from './services/auth-gaurd.service';
 const routes: Routes = [
 { path: "", pathMatch: "full", redirectTo: "app-navbar" },
-{ path: "listProvider", component: ListProviderComponent },
-{ path: "addProvider", component: AddProviderComponent },
-{ path: "updateProvider/:id", component: UpdateProviderComponent },
+{ path: "listProvider", component: ListProviderComponent, canActivate: [AuthGaurdService] },
+{ path: "addProvider", component: AddProviderComponent, canActivate: [AuthGaurdService] },
+{ path: "updateProvider/:id", component: UpdateProviderComponent, canActivate: [AuthGaurdService] },
 { path: 'login', component: LoginComponent },
-{ path: 'logout', component: LogoutComponent }
+{ path: 'logout', component: LogoutComponent, canActivate: [AuthGaurdService] }
 ];
 
 @NgModule({
