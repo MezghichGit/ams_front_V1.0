@@ -19,6 +19,9 @@ export class AuthenticationService {
             sessionStorage.setItem('username', username);
             sessionStorage.setItem('password', password);
             console.log(username + " " + password);
+
+            let authString = 'Basic ' + btoa(username + ':' + password);
+            sessionStorage.setItem('basicauth', authString);
             return userData;
           }
         )
