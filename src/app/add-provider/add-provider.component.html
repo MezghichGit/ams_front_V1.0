@@ -16,6 +16,13 @@
           <label for="providerAddress">Provider Address </label>
           <input ngModel name="providerAdress" size="20" type="text" class="form-control" id="providerAddress" />
         </div>
+
+        <div class="form-group">
+          <label for="providerImage">Provider Logo </label>
+          <input ngModel name="providerImage" class="form-control" placeholder="Image" type="file" (change)="onFileChanged($event)">
+        </div>
+
+
         <button class="btn btn-primary">Ajouter</button>
       </form>
     </div>

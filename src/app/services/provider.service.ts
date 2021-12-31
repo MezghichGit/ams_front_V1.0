@@ -29,11 +29,17 @@ export class ProviderService {
     //return this.Http.post(this.baseUrl  + '/add', this.provider,{ headers });
     return this.Http.post(this.baseUrl  + '/add', this.provider);
   }
-  updateProvider(myObj) {
+  /*updateProvider(myObj) {
    // const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
     //return this.Http.put(this.baseUrl  + '/' + myObj['id'], myObj,{ headers });
     return this.Http.put(this.baseUrl  + '/' + myObj['id'], myObj);
+  }*/
+  updateProvider(myObj,id) {
+    //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
+    //return this.Http.put(this.urlProviders + '/' + myObj['id'], myObj,{ headers });
+    return this.Http.put(this.baseUrl  + '/' + myObj['id'], id);
   }
+
   deleteProvider(myObj) {
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
     //return this.Http.delete(this.baseUrl  + '/' + myObj['id'],{ headers })

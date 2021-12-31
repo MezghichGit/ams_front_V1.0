@@ -1,6 +1,7 @@
 import { ProviderService } from './../services/provider.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-list-provider',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 export class ListProviderComponent implements OnInit {
 
   providers: any;
+  public urlUpload = environment.urlUploadImage;
   constructor(private service: ProviderService, private router: Router) { }
 
   ngOnInit() {
