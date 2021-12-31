@@ -14,40 +14,21 @@ export class ProviderService {
   provider: any;
   constructor(private Http: HttpClient) { }
   listProviders() {
-    //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-
-    //return this.Http.get(this.baseUrl  + '/list',{ headers });
     return this.Http.get(this.baseUrl  + '/list');
   }
   createProvider(myform) {
-    //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-    this.provider = {
-      'name': myform.value.providerName,
-      'email': myform.value.providerEmail,
-      'address': myform.value.providerAdress
-    }
-    //return this.Http.post(this.baseUrl  + '/add', this.provider,{ headers });
-    return this.Http.post(this.baseUrl  + '/add', this.provider);
+
+    return this.Http.post(this.baseUrl  + '/add', myform);
   }
-  /*updateProvider(myObj) {
-   // const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-    //return this.Http.put(this.baseUrl  + '/' + myObj['id'], myObj,{ headers });
-    return this.Http.put(this.baseUrl  + '/' + myObj['id'], myObj);
-  }*/
-  updateProvider(myObj,id) {
-    //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-    //return this.Http.put(this.urlProviders + '/' + myObj['id'], myObj,{ headers });
-    return this.Http.put(this.baseUrl  + '/' + myObj['id'], id);
+
+  updateProvider(myObj, id) {
+       return this.Http.put(this.baseUrl  + '/' + id, myObj);
   }
 
   deleteProvider(myObj) {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-    //return this.Http.delete(this.baseUrl  + '/' + myObj['id'],{ headers })
     return this.Http.delete(this.baseUrl  + '/' + myObj['id'])
   }
   getProvider(id) {
-    //const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(this.username + ':' + this.password) });
-    //return this.Http.get(this.baseUrl + '/' + id,{ headers })
     return this.Http.get(this.baseUrl + '/' + id)
   }
 }

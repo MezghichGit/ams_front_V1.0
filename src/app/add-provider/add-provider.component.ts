@@ -21,7 +21,7 @@ export class AddProviderComponent implements OnInit {
   public onFileChanged(event) {
     //Select File
     this.selectedFile = event.target.files[0];
-    console.log(this.selectedFile);
+    //console.log(this.selectedFile);
   }
 
 /*
@@ -49,7 +49,7 @@ export class AddProviderComponent implements OnInit {
     this.service.createProvider(provider).subscribe(
       (response) =>{
         console.log(response);
-        this.router.navigate(['providerList']);
+        this.router.navigate(['listProvider']);
       }
     );
 
